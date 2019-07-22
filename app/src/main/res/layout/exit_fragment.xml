@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#F5F5F5"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:visibility="visible"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/vehicle_number"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:hint="Vehicle Number"
+            android:maxLength="10"
+            android:padding="10dp"
+            android:singleLine="true" />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_margin="10dp"
+            android:text="EXIT"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+</LinearLayout>

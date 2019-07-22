@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ABC</string>
+    <string-array name="android_layout_arrays">
+        <item>Choose a Floor</item>
+        <item>FLOOR1</item>
+        <item>FLOOR2</item>
+        <item>FLOOR3</item>
+        <item>FLOOR4</item>
+    </string-array>
+    <string-array name="floor">
+        <item>Choose a Floor</item>
+        <item>FLOOR1</item>
+        <item>FLOOR2</item>
+        <item>FLOOR3</item>
+        <item>FLOOR4</item>
+    </string-array>
+    <string-array name="slots">
+        <item>Choose number of slots</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+</resources>
