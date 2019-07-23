@@ -18,7 +18,7 @@ import info.example.abc.R;
 
 public class ParkingLotFragment extends Fragment {
 
-    Button entry, exit, configure, slotstatus;
+    Button entry, exit, configure, slotstatus,view;
     private Spinner spinner1;
 
 
@@ -28,6 +28,7 @@ public class ParkingLotFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.parking_lot_fragment, container, false);
         entry = (Button) rootView.findViewById(R.id.entry);
         exit = (Button) rootView.findViewById(R.id.exit);
+        view = (Button) rootView.findViewById(R.id.view);
         configure = (Button) rootView.findViewById(R.id.configure);
         slotstatus = (Button) rootView.findViewById(R.id.slotstatus);
         entry.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +49,11 @@ public class ParkingLotFragment extends Fragment {
         slotstatus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 loadFragment(new SlotFragment());
+            }
+        });
+        view.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                loadFragment(new ViewFragment());
             }
         });
 

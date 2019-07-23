@@ -6,6 +6,7 @@
     android:focusable="true"
     android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:visibility="visible"
@@ -30,6 +31,37 @@
             android:textColor="@android:color/white"
             android:layout_alignParentBottom="true"
             android:layout_height="60dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="250dp"
+            android:background="@drawable/circle"
+            android:layout_margin="10dp"
+            android:text="0.OO Rs"
+            android:textSize="50dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_height="250dp" />
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_margin="10dp"
+            android:text="OK"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_height="60dp" />
+
     </LinearLayout>
 
 </LinearLayout>

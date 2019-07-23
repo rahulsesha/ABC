@@ -61,24 +61,25 @@ public class VehicleDetailsFragment extends Fragment implements RadioGroup.OnChe
             public void onClick(View view) {
                 Slot slot = new Slot();
                 slot.setNumber(number.getText().toString().trim());
-                slot.setEntry_timestamp(DateFormat.getDateTimeInstance().format(new Date()));
+                //slot.setEntry_timestamp(DateFormat.getDateTimeInstance().format(new Date()));
+                slot.setEntry_timestamp(""+System.currentTimeMillis());
                 slot.setFloor_type(floorType);
                 slot.setVehicle_type(vehicleType);
                 slot.setSlot("");
                 int i = vehicleEntryDetails(number.getText().toString().trim(), vehicleType, floorType, slot);
                 switch (i) {
                     case 0:
-                        Toast.makeText(getActivity(),"Added Successfully",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"Added Successfully",Toast.LENGTH_SHORT).show();
                         getActivity().onBackPressed();
                         break;
                     case 1:
-                        Toast.makeText(getActivity(),"Please Enter vehicle Number",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"Please Enter vehicle Number",Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
-                        Toast.makeText(getActivity(),"Please Select vehicle type",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"Please Select vehicle type",Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
-                        Toast.makeText(getActivity(),"Please Select floor",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"Please Select floor",Toast.LENGTH_SHORT).show();
                         break;
                    /*case 4:
                         Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_LONG).show();
@@ -150,7 +151,7 @@ public class VehicleDetailsFragment extends Fragment implements RadioGroup.OnChe
                         f4.setAlpha(1.0f);
                     }
                     if(sp.read("FLOOR2",0)<=0 && sp.read("FLOOR3",0)<=0 && sp.read("FLOOR4",0)<=0) {
-                        Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     f1.setEnabled(true);
@@ -172,7 +173,7 @@ public class VehicleDetailsFragment extends Fragment implements RadioGroup.OnChe
                         f4.setAlpha(1.0f);
                     }
                     if(sp.read("FLOOR3",0)<=0 && sp.read("FLOOR4",0)<=0) {
-                        Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     f2.setEnabled(true);
@@ -192,7 +193,7 @@ public class VehicleDetailsFragment extends Fragment implements RadioGroup.OnChe
                         f4.setEnabled(true);
                         f4.setAlpha(1.0f);
                     }else{
-                        Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     f3.setEnabled(true);
@@ -209,7 +210,7 @@ public class VehicleDetailsFragment extends Fragment implements RadioGroup.OnChe
                     f1.setAlpha(0.01f);
                     f2.setAlpha(0.01f);
                     f3.setAlpha(0.01f);
-                    Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"NO SPACE",Toast.LENGTH_SHORT).show();
                 } else {
                     f4.setEnabled(true);
                     f4.setAlpha(1.0f);

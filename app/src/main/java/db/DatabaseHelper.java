@@ -91,11 +91,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Slot.TABLE_NAME,
-                new String[]{Slot.COLUMN_ID,Slot.COLUMN_NUMBER, Slot.COLUMN_ENTRY_TIMESTAMP, Slot.COLUMN_EXIT_TIMESTAMP,Slot.COLUMN_VEHICLE_TYPE,Slot.COLUMN_FLOOR_TYPE,Slot.COLUMN_SLOT},
+                new String[]{Slot.COLUMN_ID, Slot.COLUMN_NUMBER, Slot.COLUMN_ENTRY_TIMESTAMP, Slot.COLUMN_EXIT_TIMESTAMP, Slot.COLUMN_VEHICLE_TYPE, Slot.COLUMN_FLOOR_TYPE, Slot.COLUMN_SLOT},
                 Slot.COLUMN_NUMBER + "=?",
                 new String[]{String.valueOf(number)}, null, null, null, null);
 
-        if(cursor!=null && cursor.getCount()>0) {
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
 
             // prepare note object
@@ -115,12 +115,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    /*public List<Slot> getAllNotes() {
+    public List<Slot> getAllNotes() {
         List<Slot> notes = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT  * FROM " + Slot.TABLE_NAME + " ORDER BY " +
-                Slot.COLUMN_TIMESTAMP + " DESC";
+                Slot.COLUMN_ENTRY_TIMESTAMP + " DESC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -130,10 +130,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 Slot note = new Slot();
                 note.setId(cursor.getInt(cursor.getColumnIndex(Slot.COLUMN_ID)));
-                note.setNote(cursor.getString(cursor.getColumnIndex(Slot.COLUMN_NOTE)));
-                note.setTimestamp(cursor.getString(cursor.getColumnIndex(Slot.COLUMN_TIMESTAMP)));
+                note.setNumber(cursor.getString(cursor.getColumnIndex(Slot.COLUMN_NUMBER)));
+                note.setEntry_timestamp(cursor.getString(cursor.getColumnIndex(Slot.COLUMN_ENTRY_TIMESTAMP)));
+                note.setExit_timestamp(cursor.getString(cursor.getColumnIndex(Slot.COLUMN_EXIT_TIMESTAMP)));
+                note.setFloor_type(cursor.getString(cursor.getColumnIndex(Slot.COLUMN_FLOOR_TYPE)));
+                note.setVehicle_type(cursor.getString(cursor.getColumnIndex(Slot.COLUMN_VEHICLE_TYPE)));
 
-                notes.add(note);
+                if (cursor.getString(cursor.getColumnIndex(Slot.COLUMN_EXIT_TIMESTAMP)) != null) {
+                    notes.add(note);
+                }
             } while (cursor.moveToNext());
         }
 
@@ -142,7 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // return notes list
         return notes;
-    }*/
+    }
 
     public int getNotesCount() {
         String countQuery = "SELECT  * FROM " + Slot.TABLE_NAME;
@@ -157,16 +162,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    /*public int updateNote(Slot note) {
+    public void updateNote(Slot note) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(Slot.COLUMN_NOTE, note.getNote());
+        values.put(Slot.COLUMN_EXIT_TIMESTAMP, note.getExit_timestamp());
 
         // updating row
-        return db.update(Slot.TABLE_NAME, values, Slot.COLUMN_ID + " = ?",
-                new String[]{String.valueOf(note.getId())});
-    }*/
+        db.update(Slot.TABLE_NAME, values, Slot.COLUMN_NUMBER + " = ?",
+                new String[]{String.valueOf(note.getNumber())});
+    }
+
+    public void updateItem(Slot item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(Slot.COLUMN_EXIT_TIMESTAMP, item.getExit_timestamp());
+        String whereClause = Slot.COLUMN_NUMBER + "=?";
+        String whereArgs[] = {item.getNumber().toString()};
+
+        db.update(Slot.TABLE_NAME, contentValues, whereClause, whereArgs);
+    }
 
     public void deleteNote(Slot slot) {
         SQLiteDatabase db = this.getWritableDatabase();
